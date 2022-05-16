@@ -151,11 +151,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\src\Application.cpp" />
     <ClCompile Include="Source\headers\glad.c" />
     <ClCompile Include="Source\src\Main.cpp" />
     <ClCompile Include="Source\src\IWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\headers\Application.h" />
     <ClInclude Include="Librares\include\glad\glad.h" />
     <ClInclude Include="Librares\include\GLFW\glfw3.h" />
     <ClInclude Include="Librares\include\GLFW\glfw3native.h" />

@@ -1,6 +1,21 @@
 #include "IWindow.h"
 
-IWindow::IWindow(const int width, const int height, std::string title)
+IWindow::IWindow()
+{
+
+}
+
+IWindow::~IWindow()
+{
+	// Delete window if IWindow is destroying 
+	// Terminate GLFW if IWindow is destroying
+	glfwDestroyWindow(window);
+	glfwTerminate();
+}
+
+
+
+void IWindow::Initialize(const int width, const int height, const std::string title)
 {
 	// Initialize GLFW
 	glfwInit();
@@ -24,12 +39,4 @@ IWindow::IWindow(const int width, const int height, std::string title)
 
 	// Interval of buffer swaping
 	glfwSwapInterval(0.75f);
-}
-
-IWindow::~IWindow()
-{
-	// Delete window if IWindow is destroying 
-	// Terminate GLFW if IWindow is destroying
-	glfwDestroyWindow(window);
-	glfwTerminate();
 }

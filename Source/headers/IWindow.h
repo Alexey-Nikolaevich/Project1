@@ -1,7 +1,7 @@
-//----------------------------------------------------
+//---------------------------------------------------------
 //	DESCRIPTION: Initializes GLFW and Window, makes Window
 //	current context
-//----------------------------------------------------
+//---------------------------------------------------------
 
 #ifndef IWINDOW_H
 #define IWINDOW_H
@@ -16,8 +16,10 @@ public:
 
 	GLFWwindow* window;
 
-	IWindow(const int width, const int height, std::string title);
+	IWindow();
 	~IWindow();
+
+	void Initialize(const int width, const int height, const std::string title);
 };
 
 #endif IWINDOW_H
