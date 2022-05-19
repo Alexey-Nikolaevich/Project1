@@ -6,16 +6,14 @@
 #define APPLICATION_H
 
 #include "IWindow.h"
+#include "Mesh.h"
 
 class Application
 {
 public:
 
 	IWindow iwindow;
-	//Camera camera;
-	//Inputs inputs;
-	//UI ui;
-	//
+	Mesh mesh;
 
 	Application();
 	~Application();

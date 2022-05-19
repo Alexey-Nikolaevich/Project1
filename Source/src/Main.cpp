@@ -1,5 +1,5 @@
 //------------------------------------------
-//	For same reason it uses to many memory
+//	For some reason it uses to many memory
 //------------------------------------------
 
 #include "Application.h"
