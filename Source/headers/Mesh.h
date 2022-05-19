@@ -1,3 +1,7 @@
+//---------------------------------------------------------
+//	DESCRIPTION: Creates tringle and shaderProgram(for now)
+//---------------------------------------------------------
+
 #ifndef MESH_H
 #define MESH_H
 
@@ -13,7 +17,6 @@ public:
 	~Mesh();
 
 	void Initialize();
-
 };
 
 #endif

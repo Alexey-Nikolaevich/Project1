@@ -38,5 +38,5 @@ void IWindow::Initialize(const int width, const int height, const std::string ti
 	glViewport(0, 0, width, height);
 
 	// Interval of buffer swaping
-	glfwSwapInterval(0.75f);
+	glfwSwapInterval(1.0f);
 }
