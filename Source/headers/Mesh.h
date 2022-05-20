@@ -17,6 +17,8 @@ public:
 	~Mesh();
 
 	void Initialize();
+
+	void Draw();
 };
 
 #endif

@@ -78,5 +78,12 @@ void Mesh::Initialize()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
+void Mesh::Draw()
+{
+	glUseProgram(shaderProgram);
+	glBindVertexArray(VAO);
+	glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);
+}
+
 
 
