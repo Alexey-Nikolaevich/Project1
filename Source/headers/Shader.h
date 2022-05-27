@@ -5,8 +5,12 @@
 #ifndef SHADER_H
 #define SHADER_H
 
-#include<glad/glad.h>
-#include<string>
+#include <glad/glad.h>
+#include <iostream>
+#include <string>
+#include <fstream>
+
+std::string getFileContent(const char* filePath);
 
 class Shader
 {

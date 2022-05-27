@@ -59,4 +59,8 @@
   <ItemGroup>
     <Library Include="Librares\lib\glfw3.lib" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\Shaders\Mesh_default.vert" />
+    <None Include="Source\Shaders\Mesh_default.frag" />
+  </ItemGroup>
 </Project>

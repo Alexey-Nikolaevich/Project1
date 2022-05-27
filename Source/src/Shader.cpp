@@ -1,7 +1,35 @@
 #include "Shader.h"
 
+std::string getFileContent(const char* filePath)
+{
+	std::string content;
+	std::string line;
+	
+	std::ifstream fin;
+	fin.exceptions(std::ifstream::badbit | std::ifstream::failbit);
+
+	try
+	{
+		fin.open(filePath);
+		while (!fin.eof())
+		{
+			std::getline(fin, line);
+			content += line + "\n";
+		}
+	}
+	catch (const std::ifstream::failure & exception)
+	{
+		std::cout << exception.what() << std::endl;
+		std::cout << exception.code() << std::endl;
+		std::cout << "Unable to open the file: " << filePath << std::endl;
+	}
+	fin.close();
+	return content;
+}
+
 Shader::Shader()
 {
+
 }
 
 Shader::~Shader()
@@ -9,30 +37,13 @@ Shader::~Shader()
 	glDeleteProgram(shaderProgram);
 }
 
-//====================VertexSahder=====================//
-const char* vertexShaderSource =
-"#version 330 core\n"
-"layout (location = 0) in vec3 aPos;\n"
-"void main()\n"
-"{\n"
-"   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-"}\0";
-//=====================================================//
-
-
-//===================FragmentShader====================//
-const char* fragmentShaderSource =
-"#version 330 core\n"
-"out vec4 FragColor;\n"
-"void main()\n"
-"{\n"
-"   FragColor = vec4(0.37f, 1.0f, 0.0f, 1.0f);\n"
-"}\n\0";
-//=====================================================//
-
-
 void Shader::Initialize()
 {
+	std::string vertexCode= getFileContent("Source/Shaders/Mesh_default.vert");
+	std::string fragmentCode= getFileContent("Source/Shaders/Mesh_default.frag");
+
+	const char* vertexShaderSource = vertexCode.c_str();
+	const char* fragmentShaderSource = fragmentCode.c_str();
 
 	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
