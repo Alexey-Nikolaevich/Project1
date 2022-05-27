@@ -11,14 +11,13 @@
 class Application
 {
 public:
-
-	IWindow iwindow;
-	Mesh mesh;
-
 	Application();
-	~Application();
 
 	void Run();
+
+private:
+	IWindow iwindow;
+	Mesh mesh;
 };
 #endif
 

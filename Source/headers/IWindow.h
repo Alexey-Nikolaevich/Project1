@@ -13,13 +13,17 @@
 class IWindow
 {
 public:
-
-	GLFWwindow* window;
-
 	IWindow();
 	~IWindow();
-
 	void Initialize(const int width, const int height, const std::string title);
+
+	GLFWwindow* getWindow()
+	{
+		return window;
+	}
+
+private:
+	GLFWwindow* window;
 };
 
 #endif IWINDOW_H

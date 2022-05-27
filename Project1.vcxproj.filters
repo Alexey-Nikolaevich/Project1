@@ -26,6 +26,9 @@
     <ClCompile Include="Source\headers\glad.c">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\src\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Librares\include\glad\glad.h">
@@ -47,6 +50,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\headers\Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\headers\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -13,12 +13,6 @@ Application::Application()
 	mesh.Initialize();
 }
 
-Application::~Application()
-{
-
-}
-
-
 void Application::Run()
 {
 	//============FPS============//
@@ -28,9 +22,11 @@ void Application::Run()
 	std::string title;
 	//===========================//
 
-	while (!glfwWindowShouldClose(iwindow.window))
+	GLFWwindow* window = iwindow.getWindow();
+
+	while (!glfwWindowShouldClose(window))
 	{
-		glClearColor(0.2f, 0.1f, 0.3f, 1.0f);
+		glClearColor(0.10f, 0.03f, 0.19f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		mesh.Draw();
@@ -41,13 +37,13 @@ void Application::Run()
 		if (crntTime - prevTime >= 1.0 / 20.0)
 		{
 			title = "FPS: " + std::to_string(c / (crntTime - prevTime));
-			glfwSetWindowTitle(iwindow.window, title.c_str());
+			glfwSetWindowTitle(window, title.c_str());
 			prevTime = crntTime;
 			c = 0;
 		}
 		//===============================================================//
 
-		glfwSwapBuffers(iwindow.window);
+		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
 }

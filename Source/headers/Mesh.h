@@ -6,19 +6,19 @@
 #define MESH_H
 
 #include "IWindow.h"
+#include "Shader.h"
 
 class Mesh
 {
 public:
-	GLuint VAO, VBO, EBO;
-	GLuint shaderProgram;
-
 	Mesh();
-	~Mesh();
-
 	void Initialize();
 
 	void Draw();
+
+private:
+	GLuint VAO, VBO, EBO;
+	Shader shader;
 };
 
 #endif
