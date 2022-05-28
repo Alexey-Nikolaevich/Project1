@@ -40,7 +40,7 @@ private:
 	int width;
 	int height;
 
-	float speed = 0.02f;
+	float speed = 0.5f;
 	float sensitivity = 100.0f;
 };
 

@@ -7,6 +7,7 @@
 
 #include "IWindow.h"
 #include "Shader.h"
+#include "Function.h"
 #include "Mesh.h"
 #include "Camera.h"
 
@@ -21,6 +22,7 @@ public:
 private:
 	IWindow iwindow;
 	Shader meshShader;
+	Function function;
 	Mesh mesh;
 	Camera camera;
 };

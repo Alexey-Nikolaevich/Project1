@@ -6,5 +6,6 @@ in vec3 position;
 
 void main()
 {
-	FragColor = vec4(0.85f, position.y, 0.10f, 1.0f);
+	//TODO: fix Shader
+	FragColor = vec4(0.0, position.y/10*position.y/10, 0.4 - position.y/15*position.y/15, 1.0f);
 };

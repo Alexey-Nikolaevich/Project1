@@ -20,6 +20,9 @@ float FIELD_OF_VIEW = 45.0f;
 std::string MESH_DEFAULT_VERT_FILE = "Source/Shaders/Mesh_default.vert";
 std::string MESH_DEFAULT_FRAG_FILE = "Source/Shaders/Mesh_default.frag";
 
+//Function
+int SCALE = 100;
+
 //BackGroundColor:
 GLfloat CLEARCOLOR[]{0.08f, 0.03f, 0.1f, 1.0f};
 //=================================================================//
@@ -29,7 +32,8 @@ Application::Application()
 {
 	iwindow.Initialize(WIDTH, HEIGHT, TITLE, OPENGL_VERSION, SWAP_INTERAVL);
 	meshShader.Initialize(MESH_DEFAULT_VERT_FILE, MESH_DEFAULT_FRAG_FILE);
-	mesh.Initialize();
+	function.Initialize(SCALE);
+	mesh.Initialize(function.GetVertices(), function.GetIndices());
 	camera.Initialize(WIDTH, HEIGHT, CAMERA_START_POSITION, CAMERA_START_ORIENTATION, NEAR_RENDER_DISTANCE, FAR_RENDER_DISTANCE, FIELD_OF_VIEW);
 }
 
