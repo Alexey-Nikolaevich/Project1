@@ -13,13 +13,13 @@ void Mesh::Initialize()
 		-0.3f,  0.0f,  0.0f, //Front left	0
 		 0.3f,  0.0f,  0.0f, //Front right	1 
 		-0.3f,  0.6f, -0.0f, //Back left	2
-		 0.3f,  0.6f, -0.0f, //Back right	3
+		 0.3f,  0.3f, -0.3f, //Back right	3
 	};
 
 	GLuint indices[] =
 	{
 		0, 1, 2,
-		//2, 3, 1
+		2, 3, 1
 	};
 
 	glGenVertexArrays(1, &VAO);
@@ -51,6 +51,3 @@ void Mesh::Draw(Shader& meshShader, Camera& camera)
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0); //TODO: fix "9"
 }
-
-
-

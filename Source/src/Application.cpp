@@ -21,7 +21,7 @@ std::string MESH_DEFAULT_VERT_FILE = "Source/Shaders/Mesh_default.vert";
 std::string MESH_DEFAULT_FRAG_FILE = "Source/Shaders/Mesh_default.frag";
 
 //BackGroundColor:
-GLfloat CLEARCOLOR[]{0.10f, 0.03f, 0.19f, 1.0f};
+GLfloat CLEARCOLOR[]{0.08f, 0.03f, 0.1f, 1.0f};
 //=================================================================//
 
 
@@ -37,15 +37,19 @@ void Application::Run()
 {
 	GLFWwindow* window = iwindow.getWindow();
 
+	glEnable(GL_DEPTH_TEST);
 
 	while (!glfwWindowShouldClose(window))
 	{
 		glClearColor(CLEARCOLOR[0], CLEARCOLOR[1], CLEARCOLOR[2], CLEARCOLOR[3]);
 		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		glfwSetWindowTitle(window, iwindow.FPS().c_str()); // FPS
+		glfwSetWindowTitle(window, iwindow.Info(camera.GetPosition()).c_str()); 
 
-		mesh.Draw(meshShader, camera); //(shader, camera)
+		camera.Controls(window);
+
+		mesh.Draw(meshShader, camera); 
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();

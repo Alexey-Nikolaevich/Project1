@@ -10,6 +10,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <string>
+#include <glm/glm.hpp>
 
 class IWindow
 {
@@ -23,16 +24,18 @@ public:
 		return window;
 	}
 
-	std::string FPS();
+	std::string Info(glm::vec3 camPosition);
 
 private:
 	GLFWwindow* window;
 
-	//============FPS============//
+	//============INFO============//
 	double crntTime = 0.0;
 	double prevTime = 0.0;
 	int c = 0;
 	std::string title;
+	std::string FPS;
+	std::string Position;
 	//===========================//
 };
 

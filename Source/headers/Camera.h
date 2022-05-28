@@ -16,9 +16,12 @@ public:
 	void Initialize(int width, int height, glm::vec3 Position, glm::vec3 Orientation, float nearRenderDistance, float farRenderDistance, float FOV);
 
 	void UniformMatrix(GLuint& shaderProgram, const char* uniform);
-	void Controls();
+	void Controls(GLFWwindow* window);
+
+	glm::vec3 GetPosition();
 
 private:
+	//To many variables
 	glm::vec3 Position;
 	glm::vec3 Orientation;
 	glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f);
@@ -31,8 +34,14 @@ private:
 
 	float FOV;
 
+	bool catchMouse = false;
+	bool firstClick = true;
+
 	int width;
 	int height;
+
+	float speed = 0.02f;
+	float sensitivity = 100.0f;
 };
 
 #endif

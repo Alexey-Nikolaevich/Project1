@@ -41,13 +41,15 @@ void IWindow::Initialize(const int width, const int height, const std::string ti
 	glfwSwapInterval(interval);
 }
 
-std::string IWindow::FPS()
+std::string IWindow::Info(glm::vec3 camPosition)
 {
 	crntTime = glfwGetTime();
 	c++;
 	if (crntTime - prevTime >= 1.0 / 20.0)
 	{
-		title = "FPS: " + std::to_string(c / (crntTime - prevTime));
+		FPS = "FPS: " + std::to_string(c / (crntTime - prevTime));
+		Position = "Position: (" + std::to_string(camPosition.x) + "; " + std::to_string(camPosition.y) + "; " + std::to_string(camPosition.z) + ")";
+		title =  FPS + "|---------|" + Position;
 		prevTime = crntTime;
 		c = 0;
 	}
