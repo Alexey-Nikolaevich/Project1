@@ -16,9 +16,10 @@ public:
 
 	void Draw();
 
+	Shader shader;
+
 private:
 	GLuint VAO, VBO, EBO;
-	Shader shader;
 };
 
 #endif

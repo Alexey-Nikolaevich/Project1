@@ -12,14 +12,16 @@ void Mesh::Initialize()
 
 	GLfloat vertices[] =
 	{
-		-0.5f, -0.5f, 1.0f, //Lower left
-		 0.5f, -0.5f, 1.0f, //Lower right
-		 0.0f,  0.5f, 1.0f	//Up
+		-0.3f,  0.0f,  0.0f, //Front left	0
+		 0.3f,  0.0f,  0.0f, //Front right	1 
+		-0.3f,  0.6f, -0.0f, //Back left	2
+		 0.3f,  0.6f, -0.0f, //Back right	3
 	};
 
 	GLuint indices[] =
 	{
-		0, 1, 2
+		0, 1, 2,
+		2, 3, 1
 	};
 
 	glGenVertexArrays(1, &VAO);

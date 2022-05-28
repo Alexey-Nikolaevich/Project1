@@ -21,8 +21,8 @@ public:
 
 	void Use();
 
+	GLuint shaderProgram; //TODO:: make private field
 private:
-	GLuint shaderProgram;
 };
 
 #endif
