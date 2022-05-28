@@ -6,10 +6,8 @@ Mesh::Mesh()
 
 }
 
-void Mesh::Initialize(Shader *meshShader)
+void Mesh::Initialize()
 {
-	this->meshShader = *meshShader; //TODO: Find is there any data leakage
-
 	GLfloat vertices[] =
 	{
 		-0.3f,  0.0f,  0.0f, //Front left	0
@@ -45,11 +43,13 @@ void Mesh::Initialize(Shader *meshShader)
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-void Mesh::Draw()
+void Mesh::Draw(Shader& meshShader, Camera& camera)
 {
 	meshShader.Use();
+	camera.UniformMatrix(meshShader.GetShaderProgram(), "camMatrix");
+
 	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0); //TODO: fix "9"
 }
 
 

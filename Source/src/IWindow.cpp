@@ -40,3 +40,16 @@ void IWindow::Initialize(const int width, const int height, const std::string ti
 	// Interval of buffer swaping
 	glfwSwapInterval(1.0f);
 }
+
+std::string IWindow::FPS()
+{
+	crntTime = glfwGetTime();
+	c++;
+	if (crntTime - prevTime >= 1.0 / 20.0)
+	{
+		title = "FPS: " + std::to_string(c / (crntTime - prevTime));
+		prevTime = crntTime;
+		c = 0;
+	}
+	return title;
+}

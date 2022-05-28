@@ -10,7 +10,7 @@
 #include <string>
 #include <fstream>
 
-std::string getFileContent(const char* filePath);
+std::string GetFileContent(const char* filePath);
 
 class Shader
 {
@@ -21,8 +21,10 @@ public:
 
 	void Use();
 
-	GLuint shaderProgram; //TODO:: make private field
+	GLuint& GetShaderProgram();
+
 private:
+	GLuint shaderProgram; 
 };
 
 #endif

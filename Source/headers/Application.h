@@ -5,13 +5,11 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include<glm/gtc/type_ptr.hpp>
-
 #include "IWindow.h"
 #include "Shader.h"
 #include "Mesh.h"
+#include "Camera.h"
+
 
 class Application
 {
@@ -24,6 +22,7 @@ private:
 	IWindow iwindow;
 	Shader meshShader;
 	Mesh mesh;
+	Camera camera;
 };
 #endif
 

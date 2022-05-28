@@ -2,69 +2,44 @@
 
 
 #include <string>
-const int width = 1000;
-const int height = 700;
-const std::string title = "Project1";
+//============================Config===============================//
+//Window:
+int WIDTH = 1200;
+int HEIGHT = 800;
+std::string TITLE = "Project1";
+
+//Camera:
+glm::vec3 CAMERA_START_POS = glm::vec3(0.0f, 0.0f, 2.0f);
+glm::vec3 CAMERA_START_ORIENTATION = glm::vec3(0.0f, 0.0f, -1.0f);
+float NEAR_RENDER_DISTANCE = 0.1f;
+float FAR_RENDER_DISTANCE = 50.0f;
+float FIELD_OF_VIEW = 45.0f;
+
+//BackGroundColor:
+GLfloat CLEARCOLOR[]{ 0.10f, 0.03f, 0.19f, 1.0f };
+//=================================================================//
 
 
 Application::Application()
 {
-	iwindow.Initialize(width, height, title);
+	iwindow.Initialize(WIDTH, HEIGHT, TITLE);
 	meshShader.Initialize();
-	mesh.Initialize(&meshShader);
+	mesh.Initialize();
+	camera.Initialize(WIDTH, HEIGHT, CAMERA_START_POS, CAMERA_START_ORIENTATION, NEAR_RENDER_DISTANCE, FAR_RENDER_DISTANCE, FIELD_OF_VIEW);
 }
 
 void Application::Run()
 {
-	//============FPS============//
-	double crntTime = 0.0;
-	double prevTime = 0.0;
-	int c = 0;
-	std::string title;
-	//===========================//
-
 	GLFWwindow* window = iwindow.getWindow();
-
-	float rotation = 0.0f; //rotation
 
 	while (!glfwWindowShouldClose(window))
 	{
-		glClearColor(0.10f, 0.03f, 0.19f, 1.0f);
+		glClearColor(CLEARCOLOR[0], CLEARCOLOR[1], CLEARCOLOR[2], CLEARCOLOR[3]);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		meshShader.Use();
+		glfwSetWindowTitle(window, iwindow.FPS().c_str()); // FPS
 
-		//==================================Camera========================================//
-		glm::mat4 model = glm::mat4(1.0f);
-		glm::mat4 view = glm::mat4(1.0f);
-		glm::mat4 proj = glm::mat4(1.0f);
-
-		model = glm::rotate(model, glm::radians(rotation), glm::vec3(0.0f, 1.0f, 0.0f));
-		view = glm::translate(view, glm::vec3(0.0f, -0.4f, -2.0f));
-		proj = glm::perspective(glm::radians(50.0f), (float)width / height, 0.1f, 100.0f);
-
-		int modelLoc = glGetUniformLocation(meshShader.shaderProgram, "model");
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		int viewLoc = glGetUniformLocation(meshShader.shaderProgram, "view");
-		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-		int projLoc = glGetUniformLocation(meshShader.shaderProgram, "proj");
-		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(proj));
-		//================================================================================//
-
-		//===============================FPS=============================//
-		crntTime = glfwGetTime();
-		c++;
-		if (crntTime - prevTime >= 1.0 / 60.0)
-		{
-			title = "FPS: " + std::to_string(c / (crntTime - prevTime));
-			glfwSetWindowTitle(window, title.c_str());
-			prevTime = crntTime;
-			c = 0;
-			rotation += 2.0f; //rotation
-		}
-		//===============================================================//
-
-		mesh.Draw();
+		mesh.Draw(meshShader, camera); //(shader, camera)
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
