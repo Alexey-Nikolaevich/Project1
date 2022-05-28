@@ -10,7 +10,8 @@ const std::string title = "Project1";
 Application::Application()
 {
 	iwindow.Initialize(width, height, title);
-	mesh.Initialize();
+	meshShader.Initialize();
+	mesh.Initialize(&meshShader);
 }
 
 void Application::Run()
@@ -31,7 +32,7 @@ void Application::Run()
 		glClearColor(0.10f, 0.03f, 0.19f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		mesh.shader.Use();
+		meshShader.Use();
 
 		//==================================Camera========================================//
 		glm::mat4 model = glm::mat4(1.0f);
@@ -39,14 +40,14 @@ void Application::Run()
 		glm::mat4 proj = glm::mat4(1.0f);
 
 		model = glm::rotate(model, glm::radians(rotation), glm::vec3(0.0f, 1.0f, 0.0f));
-		view = glm::translate(view, glm::vec3(0.0f, -0.5f, -2.0f));
-		proj = glm::perspective(glm::radians(45.0f), (float)width / height, 0.1f, 100.0f);
+		view = glm::translate(view, glm::vec3(0.0f, -0.4f, -2.0f));
+		proj = glm::perspective(glm::radians(50.0f), (float)width / height, 0.1f, 100.0f);
 
-		int modelLoc = glGetUniformLocation(mesh.shader.shaderProgram, "model");
+		int modelLoc = glGetUniformLocation(meshShader.shaderProgram, "model");
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		int viewLoc = glGetUniformLocation(mesh.shader.shaderProgram, "view");
+		int viewLoc = glGetUniformLocation(meshShader.shaderProgram, "view");
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-		int projLoc = glGetUniformLocation(mesh.shader.shaderProgram, "proj");
+		int projLoc = glGetUniformLocation(meshShader.shaderProgram, "proj");
 		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(proj));
 		//================================================================================//
 

@@ -12,14 +12,13 @@ class Mesh
 {
 public:
 	Mesh();
-	void Initialize();
+	void Initialize(Shader *meshShader);
 
 	void Draw();
 
-	Shader shader;
-
 private:
 	GLuint VAO, VBO, EBO;
+	Shader meshShader;
 };
 
 #endif

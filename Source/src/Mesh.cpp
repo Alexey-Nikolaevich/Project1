@@ -6,9 +6,9 @@ Mesh::Mesh()
 
 }
 
-void Mesh::Initialize()
+void Mesh::Initialize(Shader *meshShader)
 {
-	shader.Initialize();
+	this->meshShader = *meshShader; //TODO: Find is there any data leakage
 
 	GLfloat vertices[] =
 	{
@@ -21,7 +21,7 @@ void Mesh::Initialize()
 	GLuint indices[] =
 	{
 		0, 1, 2,
-		2, 3, 1
+		//2, 3, 1
 	};
 
 	glGenVertexArrays(1, &VAO);
@@ -47,7 +47,7 @@ void Mesh::Initialize()
 
 void Mesh::Draw()
 {
-	shader.Use();
+	meshShader.Use();
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);
 }

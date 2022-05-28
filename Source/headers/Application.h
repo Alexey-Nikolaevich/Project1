@@ -10,6 +10,7 @@
 #include<glm/gtc/type_ptr.hpp>
 
 #include "IWindow.h"
+#include "Shader.h"
 #include "Mesh.h"
 
 class Application
@@ -21,6 +22,7 @@ public:
 
 private:
 	IWindow iwindow;
+	Shader meshShader;
 	Mesh mesh;
 };
 #endif
