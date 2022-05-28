@@ -17,7 +17,7 @@ class Shader
 public:
 	Shader();
 	~Shader();
-	void Initialize();
+	void Initialize(std::string vertexFile, std::string fragmentFile);
 
 	void Use();
 

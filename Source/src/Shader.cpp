@@ -37,10 +37,10 @@ Shader::~Shader()
 	glDeleteProgram(shaderProgram);
 }
 
-void Shader::Initialize()
+void Shader::Initialize(std::string vertexFile, std::string fragmentFile)
 {
-	std::string vertexCode= getFileContent("Source/Shaders/Mesh_default.vert");
-	std::string fragmentCode= getFileContent("Source/Shaders/Mesh_default.frag");
+	std::string vertexCode = getFileContent(vertexFile.c_str());
+	std::string fragmentCode = getFileContent(fragmentFile.c_str());
 
 	const char* vertexShaderSource = vertexCode.c_str();
 	const char* fragmentShaderSource = fragmentCode.c_str();

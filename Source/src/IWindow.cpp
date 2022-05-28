@@ -15,15 +15,15 @@ IWindow::~IWindow()
 
 
 
-void IWindow::Initialize(const int width, const int height, const std::string title)
+void IWindow::Initialize(const int width, const int height, const std::string title, int version, float interval)
 {
 	// Initialize GLFW
 	glfwInit();
 
 	// Tell OpenGL what version we are using
 	// We are usign OpenGL 3.3
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, version);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, version);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	// Make window
@@ -38,7 +38,7 @@ void IWindow::Initialize(const int width, const int height, const std::string ti
 	glViewport(0, 0, width, height);
 
 	// Interval of buffer swaping
-	glfwSwapInterval(1.0f);
+	glfwSwapInterval(interval);
 }
 
 std::string IWindow::FPS()
