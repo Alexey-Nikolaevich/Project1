@@ -5,15 +5,20 @@ Camera::Camera()
 
 }
 
-void Camera::Initialize(int width, int height, glm::vec3 Position, glm::vec3 Orientation, float nearRenderDistance, float farRenderDistance, float FOV)
+void Camera::Initialize(int width, int height, glm::vec3 Position, glm::vec3 Orientation, float nearRenderDistance, float farRenderDistance, float FOV, float speed, float sensitivity)
 {
 	Camera::width = width;
 	Camera::height = height;
+	Camera::StartPosition = Position;
 	Camera::Position = Position;
+	Camera::StartOrientation = Orientation;
 	Camera::Orientation = Orientation;
 	Camera::nearRenderDistance = nearRenderDistance;
 	Camera::nearRenderDistance = farRenderDistance;
 	Camera::FOV = FOV;
+	Camera::speed = speed;
+	Camera::sensitivity = sensitivity;
+
 }
 
 void Camera::UniformMatrix(GLuint& shaderProgram, const char* uniform)
@@ -54,16 +59,13 @@ void Camera::Controls(GLFWwindow* window)
 	}
 	//===================================================================//
 
-	//====================Utility====================//
+	//================================Utility================================//
 	if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
 	{
-		Position = glm::vec3(0.0f, 0.0f, 2.0f);
-		Orientation = glm::vec3(0.0f, 0.0f, -1.0f);
+		Position = StartPosition;
+		Orientation = StartOrientation;
 	}
-	//===============================================//
 
-
-	//=============================MouseInput================================//
 	//==============================CheckForClick============================//
 	if (firstClick == true and glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
 	{
@@ -76,6 +78,10 @@ void Camera::Controls(GLFWwindow* window)
 		firstClick = true;
 	}
 	//=======================================================================//
+	//=======================================================================//
+
+
+	//=============================MouseInput================================//
 
 	if (catchMouse)
 	{

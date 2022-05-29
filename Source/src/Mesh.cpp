@@ -34,5 +34,5 @@ void Mesh::Draw(Shader& meshShader, Camera& camera)
 	camera.UniformMatrix(meshShader.GetShaderProgram(), "camMatrix");
 
 	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, 100000, GL_UNSIGNED_INT, 0); //TODO: fix "9"
+	glDrawElements(GL_LINES, 10000000, GL_UNSIGNED_INT, 0); //TODO: fix magic number
 }

@@ -9,7 +9,7 @@ class Function
 {
 public:
 	Function();
-	void Initialize(int scale);
+	void Initialize(float scale, float resolution, glm::vec4 boundaries);
 
 	std::vector<glm::vec3>& GetVertices();
 	std::vector<GLuint>& GetIndices();
@@ -18,7 +18,9 @@ private:
 	std::vector<glm::vec3> vertices;
 	std::vector<GLuint> indices;
 
-	int scale;
+	float scale;
+	float resolution;
+	glm::vec4 boundaries;
 };
 
 
