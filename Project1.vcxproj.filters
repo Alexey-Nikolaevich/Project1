@@ -32,7 +32,7 @@
     <ClCompile Include="Source\src\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\src\Function.cpp">
+    <ClCompile Include="Source\src\Graph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -64,7 +64,7 @@
     <ClInclude Include="Source\headers\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\headers\Function.h">
+    <ClInclude Include="Source\headers\Graph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -74,5 +74,6 @@
   <ItemGroup>
     <None Include="Source\Shaders\Mesh_default.vert" />
     <None Include="Source\Shaders\Mesh_default.frag" />
+    <None Include="Source\Shaders\Simple_Color.frag" />
   </ItemGroup>
 </Project>

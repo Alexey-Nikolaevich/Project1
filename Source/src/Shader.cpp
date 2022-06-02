@@ -27,11 +27,6 @@ std::string getFileContent(const char* filePath)
 	return content;
 }
 
-Shader::Shader()
-{
-
-}
-
 Shader::~Shader()
 {
 	glDeleteProgram(shaderProgram);

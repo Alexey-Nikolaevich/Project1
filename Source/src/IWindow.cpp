@@ -1,10 +1,5 @@
 #include "IWindow.h"
 
-IWindow::IWindow()
-{
-
-}
-
 IWindow::~IWindow()
 {
 	// Delete window if IWindow is destroying 

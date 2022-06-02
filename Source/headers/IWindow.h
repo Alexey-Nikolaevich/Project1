@@ -6,6 +6,7 @@
 #ifndef IWINDOW_H
 #define IWINDOW_H
 
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -15,7 +16,6 @@
 class IWindow
 {
 public:
-	IWindow();
 	~IWindow();
 	void Initialize(const int width, const int height, const std::string title, int version, float interval);
 
@@ -27,7 +27,7 @@ public:
 	std::string Info(glm::vec3 camPosition);
 
 private:
-	GLFWwindow* window;
+	GLFWwindow* window = nullptr;
 
 	//============INFO============//
 	double crntTime = 0.0;
@@ -39,4 +39,4 @@ private:
 	//===========================//
 };
 
-#endif IWINDOW_H
+#endif 

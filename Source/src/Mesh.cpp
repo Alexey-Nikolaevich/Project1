@@ -1,12 +1,10 @@
 #include "Mesh.h"
 
-Mesh::Mesh()
-{
-
-}
-
 void Mesh::Initialize(std::vector<glm::vec3>& vertices, std::vector<GLuint>& indices)
 {
+	Mesh::vertices = vertices;
+	Mesh::indices = indices;
+
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &EBO);
@@ -28,11 +26,21 @@ void Mesh::Initialize(std::vector<glm::vec3>& vertices, std::vector<GLuint>& ind
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-void Mesh::Draw(Shader& meshShader, Camera& camera)
+void Mesh::DrawPoint(Shader& meshShader, Camera& camera)
 {
 	meshShader.Use();
 	camera.UniformMatrix(meshShader.GetShaderProgram(), "camMatrix");
 
 	glBindVertexArray(VAO);
-	glDrawElements(GL_LINES, 10000000, GL_UNSIGNED_INT, 0); //TODO: fix magic number
+	glDrawElements(GL_POINTS, indices.size(), GL_UNSIGNED_INT, 0); 
+}
+
+void Mesh::DrawLine(Shader& meshShader, Camera& camera)
+{
+	meshShader.Use();
+	camera.UniformMatrix(meshShader.GetShaderProgram(), "camMatrix");
+
+	glBindVertexArray(VAO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glDrawElements(GL_LINES, indices.size(), GL_UNSIGNED_INT, 0);
 }

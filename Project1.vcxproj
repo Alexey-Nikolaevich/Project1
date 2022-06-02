@@ -151,7 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\src\Function.cpp" />
+    <ClCompile Include="Source\src\Graph.cpp" />
     <ClCompile Include="Source\src\Camera.cpp" />
     <ClCompile Include="Source\src\Shader.cpp" />
     <ClCompile Include="Source\src\Mesh.cpp" />
@@ -161,7 +161,7 @@
     <ClCompile Include="Source\src\IWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\headers\Function.h" />
+    <ClInclude Include="Source\headers\Graph.h" />
     <ClInclude Include="Source\headers\Camera.h" />
     <ClInclude Include="Source\headers\Shader.h" />
     <ClInclude Include="Source\headers\Mesh.h" />
@@ -178,6 +178,7 @@
   <ItemGroup>
     <None Include="Source\Shaders\Mesh_default.frag" />
     <None Include="Source\Shaders\Mesh_default.vert" />
+    <None Include="Source\Shaders\Simple_Color.frag" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

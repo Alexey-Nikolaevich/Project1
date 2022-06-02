@@ -5,12 +5,11 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
+
 #include "IWindow.h"
 #include "Shader.h"
-#include "Function.h"
-#include "Mesh.h"
 #include "Camera.h"
-
+#include "Graph.h"
 
 class Application
 {
@@ -20,11 +19,15 @@ public:
 	void Run();
 
 private:
+	Graph graph;
+
 	IWindow iwindow;
-	Shader meshShader;
-	Function function;
-	Mesh mesh;
+
+	Shader planeShader;
+	Shader netShader;
+
 	Camera camera;
 };
+
 #endif
 

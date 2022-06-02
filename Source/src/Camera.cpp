@@ -1,10 +1,5 @@
 #include "Camera.h"
 
-Camera::Camera()
-{
-
-}
-
 void Camera::Initialize(int width, int height, glm::vec3 Position, glm::vec3 Orientation, float nearRenderDistance, float farRenderDistance, float FOV, float speed, float sensitivity)
 {
 	Camera::width = width;
@@ -18,7 +13,6 @@ void Camera::Initialize(int width, int height, glm::vec3 Position, glm::vec3 Ori
 	Camera::FOV = FOV;
 	Camera::speed = speed;
 	Camera::sensitivity = sensitivity;
-
 }
 
 void Camera::UniformMatrix(GLuint& shaderProgram, const char* uniform)

@@ -5,6 +5,7 @@
 #ifndef SHADER_H
 #define SHADER_H
 
+
 #include <glad/glad.h>
 #include <iostream>
 #include <string>
@@ -15,7 +16,6 @@ std::string GetFileContent(const char* filePath);
 class Shader
 {
 public:
-	Shader();
 	~Shader();
 	void Initialize(std::string vertexFile, std::string fragmentFile);
 
