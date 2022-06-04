@@ -24,6 +24,7 @@ private:
 
 	Shader planeShader;
 	Shader netShader;
+	Shader arrowShader;
 
 	Camera camera;
 

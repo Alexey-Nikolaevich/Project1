@@ -21,7 +21,7 @@ void Camera::UniformMatrix(GLuint& shaderProgram, const char* uniform)
 
 	view = glm::lookAt(Position, Position + Orientation, Up);
 
-	glUniformMatrix4fv(glGetUniformLocation(shaderProgram, uniform), 1, GL_FALSE, glm::value_ptr(proj * view * model));
+	glUniformMatrix4fv(glGetUniformLocation(shaderProgram, uniform), 1, GL_FALSE, glm::value_ptr(proj * view));
 }
 
 

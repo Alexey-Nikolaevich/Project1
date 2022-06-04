@@ -71,10 +71,8 @@ std::vector<GLuint>& Graph::GenerateLineIndices()
 				planeIndices.push_back(x + z + step + 1);
 			}
 
-			//====================================//
 			planeIndices.push_back(x + z + 1);
 			planeIndices.push_back(x + z + step + 1);
-			//====================================//
 
 			planeIndices.push_back(x + z + 1);
 			planeIndices.push_back(x + z + step + 2);

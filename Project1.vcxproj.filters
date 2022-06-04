@@ -87,5 +87,6 @@
     <None Include="Source\Shaders\Mesh_default.vert" />
     <None Include="Source\Shaders\Mesh_default.frag" />
     <None Include="Source\Shaders\Simple_Color.frag" />
+    <None Include="Source\Shaders\Arrow.frag" />
   </ItemGroup>
 </Project>
