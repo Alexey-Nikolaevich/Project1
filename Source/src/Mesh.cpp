@@ -44,3 +44,15 @@ void Mesh::DrawLine(Shader& meshShader, Camera& camera)
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glDrawElements(GL_LINES, indices.size(), GL_UNSIGNED_INT, 0);
 }
+
+
+void Mesh::DrawTriangle(Shader& meshShader, Camera& camera, std::vector<glm::vec3>& newVertices)
+{
+	meshShader.Use();
+	camera.UniformMatrix(meshShader.GetShaderProgram(), "camMatrix");
+
+	glBindVertexArray(VAO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, newVertices.size() * sizeof(glm::vec3), newVertices.data(), GL_STATIC_DRAW);
+	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+}

@@ -6,9 +6,10 @@
 #define GRAPH_H
 
 
-#include <Camera.h>
-#include <Mesh.h>
-#include <Shader.h>
+#include "Camera.h"
+#include "Mesh.h"
+#include "Shader.h"
+#include "Function.h"
 
 class Graph
 {

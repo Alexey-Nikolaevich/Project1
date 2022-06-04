@@ -9,7 +9,7 @@ void Camera::Initialize(int width, int height, glm::vec3 Position, glm::vec3 Ori
 	Camera::StartOrientation = Orientation;
 	Camera::Orientation = Orientation;
 	Camera::nearRenderDistance = nearRenderDistance;
-	Camera::nearRenderDistance = farRenderDistance;
+	Camera::farRenderDistance = farRenderDistance;
 	Camera::FOV = FOV;
 	Camera::speed = speed;
 	Camera::sensitivity = sensitivity;
@@ -17,12 +17,13 @@ void Camera::Initialize(int width, int height, glm::vec3 Position, glm::vec3 Ori
 
 void Camera::UniformMatrix(GLuint& shaderProgram, const char* uniform)
 {
-	view = glm::lookAt(Position, Position + Orientation, Up);
-
 	proj = glm::perspective(glm::radians(FOV), (float)width / height, nearRenderDistance, farRenderDistance);
 
-	glUniformMatrix4fv(glGetUniformLocation(shaderProgram, uniform), 1, GL_FALSE, glm::value_ptr(proj * view));
+	view = glm::lookAt(Position, Position + Orientation, Up);
+
+	glUniformMatrix4fv(glGetUniformLocation(shaderProgram, uniform), 1, GL_FALSE, glm::value_ptr(proj * view * model));
 }
+
 
 void Camera::Controls(GLFWwindow* window)
 {

@@ -12,10 +12,10 @@ float SWAP_INTERAVL = 1.0f;
 //Camera:
 glm::vec3 CAMERA_START_POSITION = glm::vec3(18.0f, 12.0f, 18.0f);
 glm::vec3 CAMERA_START_ORIENTATION = glm::vec3(-1.0f, -0.8f, -1.0f);
-float NEAR_RENDER_DISTANCE = 0.1f;
+float NEAR_RENDER_DISTANCE = 2.0f;
 float FAR_RENDER_DISTANCE = 50.0f;
 float FIELD_OF_VIEW = 45.0f;
-float CAMERA_SPEED = 0.1f;
+float CAMERA_SPEED = 0.05f;
 float MOUSE_SENSITIVITY = 50.0f;
 
 //Shader
@@ -63,6 +63,13 @@ void Application::Run()
 		camera.UniformMatrix(planeShader.GetShaderProgram(), "camMatrix");
 
 		graph.Draw(planeShader, netShader, camera);
+
+		balls.push_back(Ball(SCALE, BOUNDARIES));
+		for (int i = 0; i < balls.size(); i++)
+		{
+			balls[i].Draw(planeShader, camera);
+			balls[i].Move();
+		}
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();

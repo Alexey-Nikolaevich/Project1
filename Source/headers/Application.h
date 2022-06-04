@@ -10,6 +10,7 @@
 #include "Shader.h"
 #include "Camera.h"
 #include "Graph.h"
+#include "Ball.h"
 
 class Application
 {
@@ -19,14 +20,16 @@ public:
 	void Run();
 
 private:
-	Graph graph;
-
 	IWindow iwindow;
 
 	Shader planeShader;
 	Shader netShader;
 
 	Camera camera;
+
+	Graph graph;
+
+	std::vector<Ball> balls;
 };
 
 #endif

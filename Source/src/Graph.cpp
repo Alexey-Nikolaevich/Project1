@@ -18,13 +18,6 @@ void Graph::Draw(Shader& meshShader, Shader& netShader, Camera& camera)
 	net.DrawLine(netShader, camera);
 }
 
-float Graph::function(float x, float z)
-{
-	float a = 0.8;
-	float b = 0.8;
-	return 4 * sin(x * a) / (x * a) * sin(z * b) / (z * b);
-}
-
 //==================================================================//
 std::vector<glm::vec3>& Graph::GenerateVertices()
 {
@@ -37,10 +30,10 @@ std::vector<glm::vec3>& Graph::GenerateVertices()
 	{
 		for (float real_x = 0; real_x <= scale + 1 / resolution; real_x += step)
 		{
-			x = (real_x) * (abs(boundaries[0]) + abs(boundaries[1])) / scale + boundaries[0];
-			z = (real_z) * (abs(boundaries[2]) + abs(boundaries[3])) / scale + boundaries[2];
-			y = function(x, z);
-			y = y * scale / 10; // WHY 10?
+			x = ToGraphScale_X(real_x);
+			z = ToGraphScale_Z(real_z);
+			y = Function(x, z);
+			y = y * scale / (abs(boundaries[0]) + abs(boundaries[1]));
 			planeVertices.push_back(glm::vec3(real_x, y, real_z));
 		}
 	}
@@ -66,11 +59,17 @@ std::vector<GLuint>& Graph::GenerateLineIndices()
 	{
 		for (int x = 0; x < resolution; x++)
 		{
-			planeIndices.push_back(x + z);
-			planeIndices.push_back(x + z + 1);
+			if (z == 0)
+			{
+				planeIndices.push_back(x + z);
+				planeIndices.push_back(x + z + 1);
+			}
 
-			planeIndices.push_back(x + z);
-			planeIndices.push_back(x + z + step + 1);
+			if (x == 0)
+			{
+				planeIndices.push_back(x + z);
+				planeIndices.push_back(x + z + step + 1);
+			}
 
 			//====================================//
 			planeIndices.push_back(x + z + 1);
@@ -84,7 +83,6 @@ std::vector<GLuint>& Graph::GenerateLineIndices()
 			planeIndices.push_back(x + z + step + 2);
 		}
 	}
-	
 	return planeIndices;
 }
 
