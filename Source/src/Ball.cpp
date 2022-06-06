@@ -37,14 +37,13 @@ void Ball::Draw(Shader& meshShader, Camera& camera)
 void Ball::Move()
 {
 	//TODO: Fix this somehow
-	int i = 0;
-	if (abs(DescentVector(position[0], position[1])[0]) + abs(DescentVector(position[0], position[1])[1]) > 0.01f && i < 10)
-	{
-		position += DescentVector(position[0], position[1]);
+	if (abs(DescentVector(position[0], position[1])[0]) + abs(DescentVector(position[0], position[1])[1]) > 0.001f)
+	{	
+		position += glm::normalize(DescentVector(position[0], position[1])) * 0.03f;
 
-		float x = (position[0] - boundaries[0]) * scale / (abs(boundaries[0]) + abs(boundaries[1]));
-		float z = (position[1] - boundaries[2]) * scale / (abs(boundaries[2]) + abs(boundaries[3]));
-		float y = Function(position[0], position[1]) * scale / (abs(boundaries[0]) + abs(boundaries[1]));
+		x = (position[0] - boundaries[0]) * scale / (abs(boundaries[0]) + abs(boundaries[1]));
+		z = (position[1] - boundaries[2]) * scale / (abs(boundaries[2]) + abs(boundaries[3]));
+		y = Function(position[0], position[1]) * scale / (abs(boundaries[0]) + abs(boundaries[1]));
 
 		vertices =
 		{  
@@ -53,6 +52,5 @@ void Ball::Move()
 			glm::vec3(-0.1f + x,  y, -0.1f + z), //Buttom Back left   2
 			glm::vec3(0.1f + x, y, -0.1f + z),  //Buttom Back right  3
 		};
-		i++;
 	}
 }

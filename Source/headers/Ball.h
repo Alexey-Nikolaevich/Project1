@@ -28,6 +28,10 @@ private:
 	Mesh sphere; //TODO: Its not a sphere
 
 	glm::vec2 position;
+
+	float x;
+	float y;
+	float z;
 };
 
 #endif

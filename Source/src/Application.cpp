@@ -72,12 +72,15 @@ void Application::Run()
 		if (i < 1000)
 		{
 			balls.push_back(Ball(SCALE, BOUNDARIES));
-			for (int i = 0; i < balls.size(); i++)
-			{
-				balls[i].Move();
-			}
 			i++;
 		}
+
+		for (int i = 0; i < balls.size(); i++)
+		{
+			balls[i].Move();
+		}
+		i++;
+		
 		
 		for (int z = 0; z < balls.size(); z++)
 		{
