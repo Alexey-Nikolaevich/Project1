@@ -10,7 +10,7 @@
 #include "Shader.h"
 #include "Camera.h"
 #include "Graph.h"
-#include "Ball.h"
+#include "Gradient_descent.h"
 
 class Application
 {
@@ -30,7 +30,7 @@ private:
 
 	Graph graph;
 
-	std::vector<Ball> balls;
+	Gradient_descent gradient_descent;
 };
 
 #endif

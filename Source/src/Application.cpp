@@ -29,6 +29,10 @@ float SCALE = 10;
 float RESOLUTION = 300;
 glm::vec4 BOUNDARIES = glm::vec4(-10.0f, 10.0f, -10.0f, 10.0f); // (x1;x2 : y1;y2)
 
+//Gradient_descent:
+int NUMBER_OF_ARROWS = 1000;
+int NUMBER_OF_ITERATIONS = 1000;
+
 //BackGroundColor:
 GLfloat CLEARCOLOR[]{0.15f, 0.15f, 0.15f, 1.0f};
 //=================================================================//
@@ -45,6 +49,8 @@ Application::Application()
 	camera.Initialize(WIDTH, HEIGHT, CAMERA_START_POSITION, CAMERA_START_ORIENTATION, NEAR_RENDER_DISTANCE, FAR_RENDER_DISTANCE, FIELD_OF_VIEW, CAMERA_SPEED, MOUSE_SENSITIVITY);
 
 	graph.Initialize(iwindow.getWindow(), SCALE, RESOLUTION, BOUNDARIES);
+
+	gradient_descent.Initialize(SCALE, BOUNDARIES, NUMBER_OF_ARROWS, NUMBER_OF_ITERATIONS);
 }
 
 void Application::Run()
@@ -52,10 +58,6 @@ void Application::Run()
 	GLFWwindow* window = iwindow.getWindow();
 
 	glEnable(GL_DEPTH_TEST);
-
-	//TODO: Move this block from here
-
-	int i = 0;
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -68,26 +70,6 @@ void Application::Run()
 
 		graph.Draw(planeShader, netShader, camera);
 
-		//TODO: Move this block from here
-		if (i < 1000)
-		{
-			balls.push_back(Ball(SCALE, BOUNDARIES));
-			i++;
-		}
-
-		for (int i = 0; i < balls.size(); i++)
-		{
-			balls[i].Move();
-		}
-		i++;
-		
-		
-		for (int z = 0; z < balls.size(); z++)
-		{
-			balls[z].Draw(arrowShader, camera);
-		}
-		i++;
-		//==========
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
