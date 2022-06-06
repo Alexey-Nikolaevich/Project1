@@ -1,9 +1,12 @@
-#include "Ball.h"
+#include "Arrow.h"
 
-Ball::Ball(float scale, glm::vec4 boundaries)
+Arrow::Arrow(float scale, glm::vec4 boundaries, float min_grad_vector, float arrow_step, int numberOfIterations)
 {
-	Ball::scale = scale;
-	Ball::boundaries = boundaries;
+	Arrow::scale = scale;
+	Arrow::boundaries = boundaries;
+	Arrow::min_grad_vector = min_grad_vector;
+	Arrow::arrow_step = arrow_step;
+	Arrow::numberOfIterations = numberOfIterations;
 
 	position = glm::vec2(-10 + std::rand() % 20,-10 + std::rand() % 20); //TODO: Fix generation
 	
@@ -26,20 +29,21 @@ Ball::Ball(float scale, glm::vec4 boundaries)
 		2, 3, 1
 	};
 
-	sphere.Initialize(vertices, indices);
+	mesh.Initialize(vertices, indices);
 }
 
-void Ball::Draw(Shader& meshShader, Camera& camera)
+void Arrow::Draw(Shader& meshShader, Camera& camera)
 {
-	sphere.DrawTriangle(meshShader, camera, vertices);
+	mesh.DrawTriangle(meshShader, camera, vertices);
+
 }
 
-void Ball::Move()
+void Arrow::Move()
 {
 	//TODO: Fix this somehow
-	if (abs(DescentVector(position[0], position[1])[0]) + abs(DescentVector(position[0], position[1])[1]) > 0.001f)
+	if ((abs(DescentVector(position[0], position[1])[0]) + abs(DescentVector(position[0], position[1])[1]) > min_grad_vector) && (iteration < numberOfIterations))
 	{	
-		position += glm::normalize(DescentVector(position[0], position[1])) * 0.03f;
+		position += glm::normalize(DescentVector(position[0], position[1])) * arrow_step;
 
 		x = (position[0] - boundaries[0]) * scale / (abs(boundaries[0]) + abs(boundaries[1]));
 		z = (position[1] - boundaries[2]) * scale / (abs(boundaries[2]) + abs(boundaries[3]));
@@ -52,5 +56,7 @@ void Ball::Move()
 			glm::vec3(-0.1f + x,  y, -0.1f + z), //Buttom Back left   2
 			glm::vec3(0.1f + x, y, -0.1f + z),  //Buttom Back right  3
 		};
+
+		iteration++;
 	}
 }

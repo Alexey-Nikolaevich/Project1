@@ -1,5 +1,5 @@
-#ifndef GRADIENT_DESCENT_H
-#define GRADIENT_DESCENT_H
+#ifndef FUNCTION_H
+#define FUNCTION_H
 
 #include "Graph.h"
 
@@ -14,4 +14,4 @@ float ToGraphScale_X(float variable);
 float ToGraphScale_Z(float variable);
 
 
-#endif GRADIENT_DESCENT_H
+#endif FUNCTION_H

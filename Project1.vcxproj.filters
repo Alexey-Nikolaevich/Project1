@@ -38,7 +38,10 @@
     <ClCompile Include="Source\src\Function.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\src\Ball.cpp">
+    <ClCompile Include="Source\src\Arrow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\src\Gradient_descent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -76,7 +79,10 @@
     <ClInclude Include="Source\headers\Function.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\headers\Ball.h">
+    <ClInclude Include="Source\headers\Arrow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\headers\GradientDescent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

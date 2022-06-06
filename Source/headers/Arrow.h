@@ -2,16 +2,16 @@
 //	DESCRIPTION: Visualize gradient descent
 //--------------------------------------------------------------
 
-#ifndef BALL_H
-#define BALL_H
+#ifndef ARROW_H
+#define ARROW_H
 
 #include "Mesh.h"
 #include "Function.h"
 
-class Ball
+class Arrow
 {
 public:
-	Ball(float scale, glm::vec4 boundaries);
+	Arrow(float scale, glm::vec4 boundaries, float min_grad_vector, float arrow_step, int numberOfIterations);
 
 	void Draw(Shader& meshShader, Camera& camera);
 
@@ -19,19 +19,24 @@ public:
 
 private:
 	float scale;
-	float resolution;
 	glm::vec4 boundaries;
+
+	float min_grad_vector;
+	float arrow_step;
+	int numberOfIterations;
 
 	std::vector<glm::vec3> vertices;
 	std::vector<GLuint> indices;
 
-	Mesh sphere; //TODO: Its not a sphere
+	Mesh mesh; 
 
 	glm::vec2 position;
 
 	float x;
 	float y;
 	float z;
+
+	int iteration = 0;
 };
 
 #endif
