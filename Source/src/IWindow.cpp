@@ -1,12 +1,20 @@
 #include "IWindow.h"
 
+IWindow::IWindow()
+{
+	//===============================//
+	std::cout << "IWindow contructed\n";
+	//===============================//
+}
+
 IWindow::~IWindow()
 {
+	//===============================//
+	std::cout << "IWindow destructed\n";
+	//===============================//
 	glfwDestroyWindow(window);
 	glfwTerminate();
 }
-
-
 
 void IWindow::Initialize(const int width, const int height, const std::string title, int version, float interval)
 {

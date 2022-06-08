@@ -14,6 +14,8 @@
 class Graph
 {
 public:
+	Graph();
+	~Graph();
 
 	void Initialize(GLFWwindow* window, float& scale, float& resolution, glm::vec4 boundaries);
 

@@ -16,8 +16,11 @@ class Application
 {
 public:
 	Application();
+	~Application();
 
 	void Run();
+
+	void WelcomeInfo();
 
 private:
 	IWindow iwindow;

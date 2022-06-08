@@ -16,6 +16,7 @@ std::string GetFileContent(const char* filePath);
 class Shader
 {
 public:
+	Shader();
 	~Shader();
 	void Initialize(std::string vertexFile, std::string fragmentFile);
 

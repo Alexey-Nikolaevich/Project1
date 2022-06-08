@@ -1,5 +1,19 @@
 #include "GradientDescent.h"
 
+GradientDescent::GradientDescent()
+{
+	//==========================================//
+	std::cout << "GradientDescent constructed\n";
+	//==========================================//
+}
+
+GradientDescent::~GradientDescent()
+{
+	//==========================================//
+	std::cout << "GradientDescent destructed\n";
+	//==========================================//
+}
+
 void GradientDescent::Initialize(float& scale, glm::vec4& boundaries, int& numberOfArrows, int& numberOfIterations, float& min_grad_vector, float& arrow_step)
 {
 	GradientDescent::scale = scale;
@@ -16,7 +30,7 @@ void GradientDescent::GenerateArrows()
 {
 	if (arrowCounter < numberOfArrows)
 	{
-		arrows.push_back(Arrow(scale, boundaries, min_grad_vector, arrow_step, numberOfArrows));
+		arrows.push_back(Arrow(scale, boundaries, min_grad_vector, arrow_step, numberOfIterations));
 		arrowCounter++;
 	}
 }
@@ -36,4 +50,13 @@ void GradientDescent::UpdateArrows()
 	{
 		arrows[i].Move();
 	}
+}
+
+void GradientDescent::DeleteArrow()
+{
+	for (int i = 0; i < arrows.size(); i++)
+	{
+		arrows[i].~Arrow();
+	}
+	arrows.clear();
 }

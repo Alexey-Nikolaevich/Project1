@@ -1,5 +1,19 @@
 #include "Mesh.h"
 
+Mesh::Mesh()
+{
+	//===============================//
+	std::cout << "Mesh constructed\n";
+	//===============================//
+}
+
+Mesh::~Mesh()
+{
+	//===============================//
+	std::cout << "Mesh destructed\n";
+	//===============================//
+}
+
 void Mesh::Initialize(std::vector<glm::vec3>& vertices, std::vector<GLuint>& indices)
 {
 	Mesh::vertices = vertices;

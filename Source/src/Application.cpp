@@ -25,13 +25,13 @@ std::string SIMPLE_COLOR_FRAG_FILE =	"Source/Shaders/Simple_Color.frag";
 std::string ARROW_FILE =				"Source/Shaders/Arrow.frag";
 
 //Function:
-float SCALE =			10;
-float RESOLUTION =		300;
-glm::vec4 BOUNDARIES =	glm::vec4(-10.0f, 10.0f, -10.0f, 10.0f); // (x1;x2 : y1;y2)
+float SCALE =			15;
+float RESOLUTION =		100;
+glm::vec4 BOUNDARIES =	glm::vec4(-12.0f, 12.0f, -12.0f, 12.0f); // (x1;x2 : y1;y2)
 
 //GradientDescent:
-int NUMBER_OF_ARROWS =		1000;
-int NUMBER_OF_ITERATIONS =	5000;
+int	NUMBER_OF_ARROWS =		1;
+int NUMBER_OF_ITERATIONS =	1000;
 float MIN_GRAD_VECTOR =		0.001f;
 float ARROW_STEP =			0.03f;
 
@@ -42,6 +42,10 @@ GLfloat CLEARCOLOR[]{0.15f, 0.15f, 0.15f, 1.0f};
 
 Application::Application()
 {
+	//======================================//
+	std::cout << "Application constructed\n";
+	//======================================//
+
 	iwindow.Initialize(WIDTH, HEIGHT, TITLE, OPENGL_VERSION, SWAP_INTERAVL);
 
 	planeShader.Initialize(MESH_DEFAULT_VERT_FILE, MESH_DEFAULT_FRAG_FILE);
@@ -55,11 +59,29 @@ Application::Application()
 	gradientDescent.Initialize(SCALE, BOUNDARIES, NUMBER_OF_ARROWS, NUMBER_OF_ITERATIONS, MIN_GRAD_VECTOR, ARROW_STEP);
 }
 
+Application::~Application()
+{
+	//======================================//
+	std::cout << "Application destructed\n";
+	//======================================//
+}
+
+void Application::WelcomeInfo()
+{
+	std::cout << "\t\t\t\t\t~Gradient Descent Application~\n";
+	std::cout << "\nBasik info about application.";
+	std::cout << "\nSettings.";
+	std::cout << "\nControls.";
+}
+
 void Application::Run()
 {
+	WelcomeInfo();
+	
 	GLFWwindow* window = iwindow.getWindow();
 
 	glEnable(GL_DEPTH_TEST);
+
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -70,12 +92,30 @@ void Application::Run()
 
 		camera.Controls(window);
 
-		graph.Draw(planeShader, netShader, camera);
+		//TODO: move to controls class
+		if (glfwGetKey(window, GLFW_KEY_H) != GLFW_PRESS)
+		{
+			graph.Draw(planeShader, netShader, camera);
+		}
+		
 
 		gradientDescent.GenerateArrows();
 		gradientDescent.Draw(arrowShader, camera);
 
+		//TODO: move to controls class
+		if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
+		{
+			gradientDescent.DeleteArrow();
+		}
+
+		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		{
+			break;
+		}
+
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
+
+	std::cout << "\n\n";
  }

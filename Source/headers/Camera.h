@@ -5,6 +5,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
+#include <iostream>
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -17,6 +18,9 @@
 class Camera
 {
 public: 
+	Camera();
+	~Camera();
+
 	void Initialize(int width, int height, glm::vec3 Position, glm::vec3 Orientation, float nearRenderDistance, float farRenderDistance, float FOV, float speed, float sensitivity);
 
 	void UniformMatrix(GLuint& shaderProgram, const char* uniform);

@@ -1,5 +1,19 @@
 #include "Graph.h"
 
+Graph::Graph()
+{
+	//=================================//
+	std::cout << "Graph constructed\n";
+	//=================================//
+}
+
+Graph::~Graph()
+{
+	//===============================//
+	std::cout << "Graph destructed\n";
+	//===============================//
+}
+
 void Graph::Initialize(GLFWwindow* window, float& scale, float& resolution, glm::vec4 boundaries)
 {
 	Graph::window = window;

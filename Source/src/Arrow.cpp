@@ -2,13 +2,17 @@
 
 Arrow::Arrow(float scale, glm::vec4 boundaries, float min_grad_vector, float arrow_step, int numberOfIterations)
 {
+	//===============================//
+	std::cout << "Arrow constructed\n";
+	//===============================//
+
 	Arrow::scale = scale;
 	Arrow::boundaries = boundaries;
 	Arrow::min_grad_vector = min_grad_vector;
 	Arrow::arrow_step = arrow_step;
 	Arrow::numberOfIterations = numberOfIterations;
 
-	position = glm::vec2(-10 + std::rand() % 20,-10 + std::rand() % 20); //TODO: Fix generation
+	position = glm::vec2(-scale + std::rand() % (int)(scale * 2), -scale + std::rand() % (int)(scale * 2)); //TODO: Fix generation
 	
 	//TODO: Fix scaling
 	float x = (position[0] - boundaries[0]) * scale / (abs(boundaries[0]) + abs(boundaries[1]));
@@ -32,6 +36,14 @@ Arrow::Arrow(float scale, glm::vec4 boundaries, float min_grad_vector, float arr
 	mesh.Initialize(vertices, indices);
 }
 
+Arrow::~Arrow()
+{
+	//===============================//
+	std::cout << "Arrow destructed\n";
+	//===============================//
+}
+
+
 void Arrow::Draw(Shader& meshShader, Camera& camera)
 {
 	mesh.DrawTriangle(meshShader, camera, vertices);
@@ -41,7 +53,7 @@ void Arrow::Draw(Shader& meshShader, Camera& camera)
 void Arrow::Move()
 {
 	//TODO: Fix this somehow
-	if ((abs(DescentVector(position[0], position[1])[0]) + abs(DescentVector(position[0], position[1])[1]) > min_grad_vector) && (iteration < numberOfIterations))
+	if ((iteration < numberOfIterations))
 	{	
 		position += glm::normalize(DescentVector(position[0], position[1])) * arrow_step;
 

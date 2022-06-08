@@ -14,6 +14,9 @@
 class Mesh
 {
 public:
+	Mesh();
+	~Mesh();
+
 	void Initialize(std::vector<glm::vec3>& vertices, std::vector<GLuint>& indices);
 
 	void DrawPoint(Shader& meshShader, Camera& camera);
