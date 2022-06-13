@@ -3,14 +3,14 @@
 Mesh::Mesh()
 {
 	//===============================//
-	std::cout << "Mesh constructed\n";
+	//std::cout << "Mesh constructed\n";
 	//===============================//
 }
 
 Mesh::~Mesh()
 {
 	//===============================//
-	std::cout << "Mesh destructed\n";
+	//std::cout << "Mesh destructed\n";
 	//===============================//
 }
 

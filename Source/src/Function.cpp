@@ -7,7 +7,7 @@ float Function(float x, float z)
 	float b = 0.08f;
 	float r = sqrt(a * x * x + b * z * z);
 	return sin(x * x + 0.1 * z * z) / (0.1 + r * r) + (x * x + 1.9 * z * z) * exp(1 - r * r) / 4.0;
-	//return x * x/10 + z * z/10;
+	//return 10 + x/100;
 }
 
 

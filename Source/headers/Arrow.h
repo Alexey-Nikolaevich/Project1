@@ -20,6 +20,8 @@ public:
 
 	void Move();
 
+	float GetHeight();
+
 private:
 	float scale;
 	glm::vec4 boundaries;

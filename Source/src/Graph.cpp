@@ -3,14 +3,14 @@
 Graph::Graph()
 {
 	//=================================//
-	std::cout << "Graph constructed\n";
+	//std::cout << "Graph constructed\n";
 	//=================================//
 }
 
 Graph::~Graph()
 {
 	//===============================//
-	std::cout << "Graph destructed\n";
+	//std::cout << "Graph destructed\n";
 	//===============================//
 }
 

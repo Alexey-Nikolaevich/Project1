@@ -1,6 +1,8 @@
 #ifndef GRADIENT_DESCENT_H
 #define GRADIENT_DESCENT_H
 
+#include <algorithm> // std::min_element
+#include <iterator>  // std::begin, std::end
 #include "Arrow.h"
 
 class GradientDescent
@@ -17,6 +19,8 @@ public:
 
 	void DeleteArrow();
 
+	void FindMinimum();
+
 private:
 	float scale;
 	glm::vec4 boundaries;
@@ -28,6 +32,8 @@ private:
 	float arrow_step;
 
 	std::vector<Arrow> arrows;
+
+	std::vector<float> heights;
 
 	int arrowCounter = 0;
 };

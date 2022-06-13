@@ -3,14 +3,14 @@
 GradientDescent::GradientDescent()
 {
 	//==========================================//
-	std::cout << "GradientDescent constructed\n";
+	//std::cout << "GradientDescent constructed\n";
 	//==========================================//
 }
 
 GradientDescent::~GradientDescent()
 {
 	//==========================================//
-	std::cout << "GradientDescent destructed\n";
+	//std::cout << "GradientDescent destructed\n";
 	//==========================================//
 }
 
@@ -59,4 +59,21 @@ void GradientDescent::DeleteArrow()
 		arrows[i].~Arrow();
 	}
 	arrows.clear();
+}
+
+void GradientDescent::FindMinimum()
+{
+	std::cout << "Minimum:\n";
+
+	heights.clear();
+
+	heights.clear();
+	for (int i = 0; i < arrows.size(); i++)
+	{
+		heights.push_back(arrows[i].GetHeight());
+	}
+
+	auto min = std::min_element(std::begin(heights), std::end(heights));
+
+	std::cout << "\n\nMinimum: " << *min;
 }

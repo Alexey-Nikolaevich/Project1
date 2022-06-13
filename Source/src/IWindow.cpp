@@ -3,14 +3,14 @@
 IWindow::IWindow()
 {
 	//===============================//
-	std::cout << "IWindow contructed\n";
+	//std::cout << "IWindow contructed\n";
 	//===============================//
 }
 
 IWindow::~IWindow()
 {
 	//===============================//
-	std::cout << "IWindow destructed\n";
+	//std::cout << "IWindow destructed\n";
 	//===============================//
 	glfwDestroyWindow(window);
 	glfwTerminate();

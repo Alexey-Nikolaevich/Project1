@@ -3,14 +3,14 @@
 Camera::Camera()
 {
 	//=================================//
-	std::cout << "Camera constructed\n";
+	//std::cout << "Camera constructed\n";
 	//=================================//
 }
 
 Camera::~Camera()
 {
 	//================================//
-	std::cout << "Camera destructed\n";
+	//std::cout << "Camera destructed\n";
 	//================================//
 }
 

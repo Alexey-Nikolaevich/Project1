@@ -30,14 +30,14 @@ std::string getFileContent(const char* filePath)
 Shader::Shader()
 {
 	//===============================//
-	std::cout << "Shader constructed\n";
+	//std::cout << "Shader constructed\n";
 	//===============================//
 }
 
 Shader::~Shader()
 {
 	//===============================//
-	std::cout << "Shader destructed\n";
+	//std::cout << "Shader destructed\n";
 	//===============================//
 	glDeleteProgram(shaderProgram);
 }

@@ -30,7 +30,7 @@ float RESOLUTION =		100;
 glm::vec4 BOUNDARIES =	glm::vec4(-12.0f, 12.0f, -12.0f, 12.0f); // (x1;x2 : y1;y2)
 
 //GradientDescent:
-int	NUMBER_OF_ARROWS =		1;
+int	NUMBER_OF_ARROWS =		1000;
 int NUMBER_OF_ITERATIONS =	1000;
 float MIN_GRAD_VECTOR =		0.001f;
 float ARROW_STEP =			0.03f;
@@ -43,7 +43,7 @@ GLfloat CLEARCOLOR[]{0.15f, 0.15f, 0.15f, 1.0f};
 Application::Application()
 {
 	//======================================//
-	std::cout << "Application constructed\n";
+	//std::cout << "Application constructed\n";
 	//======================================//
 
 	iwindow.Initialize(WIDTH, HEIGHT, TITLE, OPENGL_VERSION, SWAP_INTERAVL);
@@ -62,7 +62,7 @@ Application::Application()
 Application::~Application()
 {
 	//======================================//
-	std::cout << "Application destructed\n";
+	//std::cout << "Application destructed\n";
 	//======================================//
 }
 
@@ -92,13 +92,6 @@ void Application::Run()
 
 		camera.Controls(window);
 
-		//TODO: move to controls class
-		if (glfwGetKey(window, GLFW_KEY_H) != GLFW_PRESS)
-		{
-			graph.Draw(planeShader, netShader, camera);
-		}
-		
-
 		gradientDescent.GenerateArrows();
 		gradientDescent.Draw(arrowShader, camera);
 
@@ -107,10 +100,17 @@ void Application::Run()
 		{
 			gradientDescent.DeleteArrow();
 		}
-
+		if (glfwGetKey(window, GLFW_KEY_H) != GLFW_PRESS)
+		{
+			graph.Draw(planeShader, netShader, camera);
+		}
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		{
 			break;
+		}
+		if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS)
+		{
+			gradientDescent.FindMinimum();
 		}
 
 		glfwSwapBuffers(window);
