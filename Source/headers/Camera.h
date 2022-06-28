@@ -27,7 +27,6 @@ public:
 	glm::vec3 GetPosition();
 
 private:
-	//To many variables
 	glm::vec3 StartPosition;
 	glm::vec3 Position;
 	glm::vec3 StartOrientation;

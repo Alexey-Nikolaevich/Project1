@@ -34,15 +34,6 @@ void Mesh::Initialize(std::vector<glm::vec3>& vertices, std::vector<GLuint>& ind
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-void Mesh::DrawPoint(Shader& meshShader, Camera& camera)
-{
-	meshShader.Use();
-	camera.UniformMatrix(meshShader.GetShaderProgram(), "camMatrix");
-
-	glBindVertexArray(VAO);
-	glDrawElements(GL_POINTS, indices.size(), GL_UNSIGNED_INT, 0); 
-}
-
 void Mesh::DrawLine(Shader& meshShader, Camera& camera)
 {
 	meshShader.Use();

@@ -187,6 +187,9 @@
     <None Include="Source\Shaders\Mesh_default.vert" />
     <None Include="Source\Shaders\Simple_Color.frag" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

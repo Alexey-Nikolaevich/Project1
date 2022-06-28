@@ -118,7 +118,7 @@ std::vector<glm::vec3>& Graph::GenerateNetVertices()
 }
 std::vector<GLuint>& Graph::GenerateNetIndices()
 {
-	for (int i = 0; i < scale * (abs(boundaries[0]) + abs(boundaries[1])); i += 3) //TODO: fix magic number
+	for (int i = 0; i < scale * (abs(boundaries[0]) + abs(boundaries[1])); i += 3)
 	{
 		netIndices.push_back(i);
 		netIndices.push_back(i + 1);

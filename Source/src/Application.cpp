@@ -30,7 +30,7 @@ const float RESOLUTION =		100;
 const glm::vec4 BOUNDARIES =	glm::vec4(-12.0f, 12.0f, -12.0f, 12.0f); // (x1;x2 : y1;y2)
 
 //GradientDescent:
-const int	NUMBER_OF_ARROWS =		1;
+const int	NUMBER_OF_ARROWS =		100;
 const int NUMBER_OF_ITERATIONS =	1500;
 const float MIN_GRAD_VECTOR =		0.001f;
 const float ARROW_STEP =			0.03f;

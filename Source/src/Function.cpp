@@ -6,7 +6,7 @@ float Function(float x, float z)
 	float b = 0.08f;
 	float r = sqrt(a * x * x + b * z * z);
 	//return sin(x * x + 0.1 * z * z) / (0.1 + r * r) + (x * x + 1.9 * z * z) * exp(1 - r * r) / 4.0 + x*x/100 + z*z/100 - 1;
-	return (x-5)*(x-5)/25 + (z-5)*(z-5)/25 - 1.21;
+	return (x-2.3)*(x-2.3)/25 + (z-2.5)*(z-2.5)/25 -0.14;
 }
 
 
@@ -30,14 +30,14 @@ glm::vec2 DescentVector(float x, float z)
 //======================Differentiate=========================//
 float Differentiate_X(float x, float z)
 {
-	float dx = 0.001; //TODO: Fix magic number
+	float dx = 0.001; 
 
 	return (Function(x + dx, z) - Function(x, z)) / dx;
 }
 
 float Differentiate_Z(float x, float z)
 {
-	float dz = 0.001; //TODO: Fix magic number
+	float dz = 0.001; 
 
 	return (Function(x, z + dz) - Function(x, z)) / dz;
 }
@@ -48,31 +48,25 @@ float Differentiate_Z(float x, float z)
 //=========================TRANSFORM_COORDINATES==========================//
 float ToGraphScale_X(float variable/*, scale, resolution, boundaries*/)
 {
-	//TODO: FIX THIS ->
 	float SCALE = 15;
 	float RESOLUTION = 300;
 	glm::vec4 BOUNDARIES = glm::vec4(-12.0f, 12.0f, -12.0f, 12.0f); // (x1;x2 : y1;y2)
-	//================
 	return (variable) * (abs(BOUNDARIES[0]) + abs(BOUNDARIES[1])) / SCALE + BOUNDARIES[0];
 }
 
 float ToGraphScale_Z(float variable/*, scale, resolution, boundaries*/)
 {
-	//TODO: FIX THIS ->
 	float SCALE = 15;
 	float RESOLUTION = 300;
 	glm::vec4 BOUNDARIES = glm::vec4(-12.0f, 12.0f, -12.0f, 12.0f); // (x1;x2 : y1;y2)
-	//================
 	return (variable) * (abs(BOUNDARIES[2]) + abs(BOUNDARIES[3])) / SCALE + BOUNDARIES[2];
 }
 
 float ToGraphScale_Y(float variable/*, scale, resolution, boundaries*/)
 {
-	//TODO: FIX THIS ->
 	float SCALE = 15;
 	float RESOLUTION = 300;
 	glm::vec4 BOUNDARIES = glm::vec4(-12.0f, 12.0f, -12.0f, 12.0f); // (x1;x2 : y1;y2)
-	//================
 	return (variable) * (abs(BOUNDARIES[2]) + abs(BOUNDARIES[3])) / SCALE + BOUNDARIES[2];
 }
 //========================================================================//

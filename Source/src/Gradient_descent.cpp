@@ -17,8 +17,6 @@ void GradientDescent::Initialize(float scale, glm::vec4 boundaries, int numberOf
 	GradientDescent::numberOfIterations = numberOfIterations;
 	GradientDescent::min_grad_vector = min_grad_vector;
 	GradientDescent::arrow_step = arrow_step;
-
-//	GenerateArrows();
 }
 
 void GradientDescent::GenerateArrows()
