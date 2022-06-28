@@ -8,10 +8,9 @@
 class GradientDescent
 {
 public:
-	GradientDescent();
 	~GradientDescent();
 
-	void Initialize(float& scale, glm::vec4& boundaries, int& numberOfArrows, int& numberOfIterations, float& min_grad_vector, float& arrow_step);
+	void Initialize(float scale, glm::vec4 boundaries, int numberOfArrows, int numberOfIterations, float min_grad_vector, float arrow_step);
 
 	void GenerateArrows();
 	void Draw(Shader& meshShader, Camera& camera);
@@ -19,13 +18,12 @@ public:
 
 	void DeleteArrow();
 
-	void FindMinimum();
+	glm::vec2 FindMinimum();
 
 private:
 	float scale;
 	glm::vec4 boundaries;
 
-	int numberOfArrows;
 	int numberOfIterations;
 
 	float min_grad_vector;
@@ -34,8 +32,6 @@ private:
 	std::vector<Arrow> arrows;
 
 	std::vector<float> heights;
-
-	int arrowCounter = 0;
 };
 
 #endif

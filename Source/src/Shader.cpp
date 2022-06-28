@@ -1,44 +1,7 @@
 #include "Shader.h"
 
-std::string getFileContent(const char* filePath)
-{
-	std::string content;
-	std::string line;
-	
-	std::ifstream fin;
-	fin.exceptions(std::ifstream::badbit | std::ifstream::failbit);
-
-	try
-	{
-		fin.open(filePath);
-		while (!fin.eof())
-		{
-			std::getline(fin, line);
-			content += line + "\n";
-		}
-	}
-	catch (const std::ifstream::failure & exception)
-	{
-		std::cout << exception.what() << std::endl;
-		std::cout << exception.code() << std::endl;
-		std::cout << "Unable to open the file: " << filePath << std::endl;
-	}
-	fin.close();
-	return content;
-}
-
-Shader::Shader()
-{
-	//===============================//
-	//std::cout << "Shader constructed\n";
-	//===============================//
-}
-
 Shader::~Shader()
 {
-	//===============================//
-	//std::cout << "Shader destructed\n";
-	//===============================//
 	glDeleteProgram(shaderProgram);
 }
 
@@ -65,6 +28,34 @@ void Shader::Initialize(std::string vertexFile, std::string fragmentFile)
 
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
+}
+
+
+std::string Shader::getFileContent(const char* filePath)
+{
+	std::string content;
+	std::string line;
+
+	std::ifstream fin;
+	fin.exceptions(std::ifstream::badbit | std::ifstream::failbit);
+
+	try
+	{
+		fin.open(filePath);
+		while (!fin.eof())
+		{
+			std::getline(fin, line);
+			content += line + "\n";
+		}
+	}
+	catch (const std::ifstream::failure& exception)
+	{
+		std::cout << exception.what() << std::endl;
+		std::cout << exception.code() << std::endl;
+		std::cout << "Unable to open the file: " << filePath << std::endl;
+	}
+	fin.close();
+	return content;
 }
 
 void Shader::Use()

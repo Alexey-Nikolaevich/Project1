@@ -14,13 +14,13 @@ public:
 	Arrow(float scale, glm::vec4 boundaries, float min_grad_vector, float arrow_step, int numberOfIterations);
 
 	~Arrow();
-	void Delete();
 
 	void Draw(Shader& meshShader, Camera& camera);
 
 	void Move();
 
-	float GetHeight();
+	glm::vec2 GetPosition();
+	void FillVertices(float x, float y, float z);
 
 private:
 	float scale;
@@ -35,7 +35,14 @@ private:
 
 	Mesh mesh; 
 
+	float crntTime;
+	float prevTime = 0.0f;
+	float deltaTime = 0.0;
+
 	glm::vec2 position;
+	glm::vec2 Force;
+	glm::vec2 Aciliration;
+	glm::vec2 Velocity;
 
 	float x;
 	float y;

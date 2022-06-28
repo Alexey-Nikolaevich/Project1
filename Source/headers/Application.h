@@ -16,11 +16,13 @@ class Application
 {
 public:
 	Application();
-	~Application();
 
 	void Run();
 
-	void WelcomeInfo();
+	void Program_State_Descent(GLFWwindow* window);
+	void Program_State_Graph(GLFWwindow* window);
+
+	void CheckForExit(GLFWwindow* window);
 
 private:
 	IWindow iwindow;
@@ -32,8 +34,6 @@ private:
 	Camera camera;
 
 	Graph graph;
-
-	GradientDescent gradientDescent;
 };
 
 #endif

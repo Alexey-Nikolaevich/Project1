@@ -16,7 +16,6 @@
 class IWindow
 {
 public:
-	IWindow();
 	~IWindow();
 	void Initialize(const int width, const int height, const std::string title, int version, float interval);
 
@@ -25,7 +24,7 @@ public:
 		return window;
 	}
 
-	std::string Info(glm::vec3 camPosition);
+	std::string Info(glm::vec3 camPosition, std::string additionalInfo);
 
 private:
 	GLFWwindow* window = nullptr;

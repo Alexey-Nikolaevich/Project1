@@ -1,17 +1,7 @@
 #include "IWindow.h"
 
-IWindow::IWindow()
-{
-	//===============================//
-	//std::cout << "IWindow contructed\n";
-	//===============================//
-}
-
 IWindow::~IWindow()
 {
-	//===============================//
-	//std::cout << "IWindow destructed\n";
-	//===============================//
 	glfwDestroyWindow(window);
 	glfwTerminate();
 }
@@ -34,7 +24,7 @@ void IWindow::Initialize(const int width, const int height, const std::string ti
 	glfwSwapInterval(interval);
 }
 
-std::string IWindow::Info(glm::vec3 camPosition)
+std::string IWindow::Info(glm::vec3 camPosition, std::string additionalInfo)
 {
 	crntTime = glfwGetTime();
 	c++;
@@ -42,7 +32,7 @@ std::string IWindow::Info(glm::vec3 camPosition)
 	{
 		FPS = "FPS: " + std::to_string(c / (crntTime - prevTime));
 		Position = "Position: (" + std::to_string(camPosition.x) + "; " + std::to_string(camPosition.y) + "; " + std::to_string(camPosition.z) + ")";
-		title =  FPS + "|---------|" + Position;
+		title = FPS + "     " + Position + "     " + additionalInfo ;
 		prevTime = crntTime;
 		c = 0;
 	}

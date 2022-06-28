@@ -11,15 +11,13 @@
 #include <string>
 #include <fstream>
 
-std::string GetFileContent(const char* filePath);
 
 class Shader
 {
 public:
-	Shader();
 	~Shader();
 	void Initialize(std::string vertexFile, std::string fragmentFile);
-
+	std::string getFileContent(const char* filePath);
 	void Use();
 
 	GLuint& GetShaderProgram();

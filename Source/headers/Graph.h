@@ -14,10 +14,7 @@
 class Graph
 {
 public:
-	Graph();
-	~Graph();
-
-	void Initialize(GLFWwindow* window, float& scale, float& resolution, glm::vec4 boundaries);
+	void Initialize(GLFWwindow* window, float scale, float resolution, glm::vec4 boundaries);
 
 	void Draw(Shader& meshShader, Shader& netShader, Camera& camera);
 

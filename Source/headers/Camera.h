@@ -18,8 +18,6 @@
 class Camera
 {
 public: 
-	Camera();
-	~Camera();
 
 	void Initialize(int width, int height, glm::vec3 Position, glm::vec3 Orientation, float nearRenderDistance, float farRenderDistance, float FOV, float speed, float sensitivity);
 

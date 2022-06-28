@@ -2,16 +2,15 @@
 
 float Function(float x, float z)
 {
-	//TODO: make function inputable
 	float a = 0.08f;
 	float b = 0.08f;
 	float r = sqrt(a * x * x + b * z * z);
-	return sin(x * x + 0.1 * z * z) / (0.1 + r * r) + (x * x + 1.9 * z * z) * exp(1 - r * r) / 4.0;
-	//return 10 + x/100;
+	//return sin(x * x + 0.1 * z * z) / (0.1 + r * r) + (x * x + 1.9 * z * z) * exp(1 - r * r) / 4.0 + x*x/100 + z*z/100 - 1;
+	return (x-5)*(x-5)/25 + (z-5)*(z-5)/25 - 1.21;
 }
 
 
-glm::vec2 /*Get*/DescentVector(float x, float z) //TODO: think about naming
+glm::vec2 DescentVector(float x, float z)
 {
 	glm::vec2 descentVector;
 
@@ -58,6 +57,16 @@ float ToGraphScale_X(float variable/*, scale, resolution, boundaries*/)
 }
 
 float ToGraphScale_Z(float variable/*, scale, resolution, boundaries*/)
+{
+	//TODO: FIX THIS ->
+	float SCALE = 15;
+	float RESOLUTION = 300;
+	glm::vec4 BOUNDARIES = glm::vec4(-12.0f, 12.0f, -12.0f, 12.0f); // (x1;x2 : y1;y2)
+	//================
+	return (variable) * (abs(BOUNDARIES[2]) + abs(BOUNDARIES[3])) / SCALE + BOUNDARIES[2];
+}
+
+float ToGraphScale_Y(float variable/*, scale, resolution, boundaries*/)
 {
 	//TODO: FIX THIS ->
 	float SCALE = 15;
