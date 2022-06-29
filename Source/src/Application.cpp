@@ -26,7 +26,7 @@ const std::string ARROW_FILE =				"Source/Shaders/Arrow.frag";
 
 //Function:
 const float SCALE =				15;
-const float RESOLUTION =		100;
+const float RESOLUTION =		150;
 const glm::vec4 BOUNDARIES =	glm::vec4(-12.0f, 12.0f, -12.0f, 12.0f); // (x1;x2 : y1;y2)
 
 //GradientDescent:
@@ -71,7 +71,7 @@ void Application::Program_State_Descent(GLFWwindow* window)
 	GradientDescent gradientDescent;
 	gradientDescent.Initialize(SCALE, BOUNDARIES, NUMBER_OF_ARROWS, NUMBER_OF_ITERATIONS, MIN_GRAD_VECTOR, ARROW_STEP);
 	int counter = 0;
-	std::string minInfo;
+	std::string minInfo = " ";
 	while (glfwGetKey(window, GLFW_KEY_K) != GLFW_PRESS && !glfwWindowShouldClose(window))
 	{
 		if (counter < NUMBER_OF_ARROWS)

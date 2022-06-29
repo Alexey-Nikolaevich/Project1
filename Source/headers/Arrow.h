@@ -42,7 +42,7 @@ private:
 	glm::vec2 position;
 	glm::vec2 Force;
 	glm::vec2 Aciliration;
-	glm::vec2 Velocity;
+	glm::vec2 Velocity = glm::vec2(0, 0);
 
 	float x;
 	float y;

@@ -5,8 +5,8 @@ float Function(float x, float z)
 	float a = 0.08f;
 	float b = 0.08f;
 	float r = sqrt(a * x * x + b * z * z);
-	//return sin(x * x + 0.1 * z * z) / (0.1 + r * r) + (x * x + 1.9 * z * z) * exp(1 - r * r) / 4.0 + x*x/100 + z*z/100 - 1;
-	return (x-2.3)*(x-2.3)/25 + (z-2.5)*(z-2.5)/25 -0.14;
+	return sin(x * x + 0.1 * z * z) / (0.1 + r * r) + (x * x + 1.9 * z * z) * exp(1 - r * r) / 4.0 + x*x/100 + z*z/100 - 1;
+	//return (x-2.3)*(x-2.3)/25 + (z-2.5)*(z-2.5)/25 -0.14;
 }
 
 
@@ -68,5 +68,29 @@ float ToGraphScale_Y(float variable/*, scale, resolution, boundaries*/)
 	float RESOLUTION = 300;
 	glm::vec4 BOUNDARIES = glm::vec4(-12.0f, 12.0f, -12.0f, 12.0f); // (x1;x2 : y1;y2)
 	return (variable) * (abs(BOUNDARIES[2]) + abs(BOUNDARIES[3])) / SCALE + BOUNDARIES[2];
+}
+
+float ToRealScale_X(float x/*, scale, resolution, boundaries*/)
+{
+	float SCALE = 15;
+	float RESOLUTION = 300;
+	glm::vec4 BOUNDARIES = glm::vec4(-12.0f, 12.0f, -12.0f, 12.0f); // (x1;x2 : y1;y2)
+	return (x - BOUNDARIES[0]) * SCALE / (abs(BOUNDARIES[0]) + abs(BOUNDARIES[1]));
+}
+
+float ToRealScale_Z(float z/*, scale, resolution, boundaries*/)
+{
+	float SCALE = 15;
+	float RESOLUTION = 300;
+	glm::vec4 BOUNDARIES = glm::vec4(-12.0f, 12.0f, -12.0f, 12.0f); // (x1;x2 : y1;y2)
+	return (z - BOUNDARIES[2]) * SCALE / (abs(BOUNDARIES[2]) + abs(BOUNDARIES[3]));
+}
+
+float ToRealScale_Y(float y/*, scale, resolution, boundaries*/)
+{
+	float SCALE = 15;
+	float RESOLUTION = 300;
+	glm::vec4 BOUNDARIES = glm::vec4(-12.0f, 12.0f, -12.0f, 12.0f); // (x1;x2 : y1;y2)
+	return y * SCALE / (abs(BOUNDARIES[0]) + abs(BOUNDARIES[1]));
 }
 //========================================================================//

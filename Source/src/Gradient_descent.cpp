@@ -57,8 +57,8 @@ glm::vec2 GradientDescent::FindMinimum()
 	heights.clear();
 
 	float minimum = 1000;
-	glm::vec2 minPosition;
-	glm::vec2 position;
+	glm::vec2 minPosition = glm::vec2(0,0);
+	glm::vec2 position = glm::vec2(0, 0);
 	for (int i = 0; i < arrows.size(); i++)
 	{
 		position = arrows[i].GetPosition();

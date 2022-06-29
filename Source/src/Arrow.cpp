@@ -10,10 +10,6 @@ Arrow::Arrow(float scale, glm::vec4 boundaries, float min_grad_vector, float arr
 
 	float scal = 12;
 	position = glm::vec2((-scal + std::rand() % (int)(scal * 2))/1, (-scal + std::rand() % (int)(scal * 2)) / 1);
-	
-	vertices =
-	{ 
-	};
 
 	indices =
 	{
@@ -32,7 +28,6 @@ Arrow::Arrow(float scale, glm::vec4 boundaries, float min_grad_vector, float arr
 		3, 0, 7,
 		4, 7, 0
 	};
-
 
 	mesh.Initialize(vertices, indices);
 }
@@ -59,10 +54,6 @@ void Arrow::Move()
 	{
 		return;
 	}
-	if (glm::length(DescentVector(position[0], position[1])) < 0.0005f)
-	{
-		return;
-	}
 
 	float crntTime = glfwGetTime();
 	if (crntTime - prevTime >= 1.0f / 2.0f)
@@ -76,19 +67,18 @@ void Arrow::Move()
 	}
 
 	Aciliration = DescentVector(position[0], position[1]);
-	if (glm::length(Aciliration) > 0.2f)
+	if (glm::length(Aciliration) > 0.05f)
 	{
-		Aciliration = glm::normalize(Aciliration);
-		Aciliration[0] = Aciliration[0] * 0.2f;
-		Aciliration[1] = Aciliration[1] * 0.2f;
+		Aciliration = glm::normalize(Aciliration) * 0.05f;
 	}
 
-	Velocity = Aciliration * deltaTime;
+	Velocity += Aciliration;
+	Velocity = Velocity - glm::normalize(Velocity) * glm::length(Velocity)/20.0f;
 	position = position + Velocity * deltaTime + Aciliration * deltaTime * deltaTime / 2.0f;
 
-	x = (position[0] - boundaries[0]) * scale / (abs(boundaries[0]) + abs(boundaries[1]));
-	z = (position[1] - boundaries[2]) * scale / (abs(boundaries[2]) + abs(boundaries[3]));
-	y = Function(position[0], position[1]) * scale / (abs(boundaries[0]) + abs(boundaries[1]));
+	x = ToRealScale_X(position[0]);
+	z = ToRealScale_Z(position[1]);
+	y = ToRealScale_Y(Function(position[0], position[1]));
 
 	FillVertices(x, y, z);
 
